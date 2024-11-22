@@ -6,6 +6,7 @@
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/ext_power.h>
 #include <dt-bindings/zmk/keys.h>
 
 / {
@@ -35,10 +36,10 @@
             //                    | GUI |     | SPC |   | ENT |     | ALT |
 
             bindings = <
-&kp TAB       &kp N1          &kp N2        &kp N3        &kp N4        &kp N5          &kp N6        &kp N7        &kp N8         &kp N9        &kp N0        &kp BSPC
-&kp LEFT_ALT  &kp NUMBER_6    &kp NUMBER_7  &kp N8        &kp NUMBER_7  &kp NUMBER_9    &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2   &bt BT_SEL 3  &bt BT_SEL 4  &trans
-&kp LSHFT     &kp LEFT_ARROW  &kp DOWN      &kp UP_ARROW  &kp RIGHT     &trans          &trans        &trans        &trans         &trans        &trans        &kp LCTRL
-                                            &kp LGUI      &trans        &kp ENTER       &kp SPACE     &trans        &kp BACKSPACE
+&kp TAB       &kp N1          &kp N2        &kp N3        &kp N4     &kp N5       &kp N6        &kp N7        &kp N8         &kp N9        &kp N0        &kp ESCAPE
+&kp LEFT_ALT  &kp NUMBER_6    &kp NUMBER_7  &kp N8        &kp N9     &kp N0       &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2   &bt BT_SEL 3  &bt BT_SEL 4  &trans
+&kp LSHFT     &kp LEFT_ARROW  &kp DOWN      &kp UP_ARROW  &kp RIGHT  &trans       &trans        &trans        &trans         &trans        &trans        &kp LCTRL
+                                            &kp LGUI      &trans     &kp ENTER    &kp SPACE     &trans        &kp BACKSPACE
             >;
         };
 
@@ -50,10 +51,19 @@
             //                    | GUI |     | SPC |   | ENT |     | ALT |
 
             bindings = <
-&kp TAB       &kp EXCL  &kp AT  &kp HASH  &kp DLLR  &kp PRCNT    &kp CARET  &kp AMPS   &kp KP_MULTIPLY  &kp LPAR  &kp RPAR  &kp BSPC
-&kp LEFT_ALT  &trans    &trans  &trans    &trans    &trans       &kp MINUS  &kp EQUAL  &kp LBKT         &kp RBKT  &kp BSLH  &kp GRAVE
-&kp LSHFT     &trans    &trans  &trans    &trans    &trans       &kp UNDER  &kp PLUS   &kp LBRC         &kp RBRC  &kp PIPE  &kp TILDE
-                                &kp LGUI  &trans    &kp ENTER    &kp SPACE  &trans     &kp BACKSPACE
+&kp TAB       &kp EXCL              &kp AT                &kp HASH  &kp DLLR  &kp PRCNT    &kp CARET  &kp AMPS   &kp KP_MULTIPLY  &kp LPAR  &kp RPAR  &kp ESCAPE
+&kp LEFT_ALT  &kp C_BRIGHTNESS_DEC  &kp C_BRIGHTNESS_INC  &trans    &trans    &trans       &kp MINUS  &kp EQUAL  &kp LBKT         &kp RBKT  &kp BSLH  &kp GRAVE
+&kp LSHFT     &kp K_VOLUME_DOWN     &kp K_VOLUME_UP       &trans    &trans    &trans       &kp UNDER  &kp PLUS   &kp LBRC         &kp RBRC  &kp PIPE  &kp TILDE
+                                                          &kp LGUI  &trans    &kp ENTER    &kp SPACE  &trans     &kp BACKSPACE
+            >;
+        };
+
+        layer_3 {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &ext_power EP_OFF  &ext_power EP_ON
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans             &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans             &trans
+                        &trans  &trans  &trans    &trans  &trans  &trans
             >;
         };
     };
