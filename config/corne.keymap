@@ -60,9 +60,9 @@
 
         layer_3 {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &ext_power EP_OFF  &ext_power EP_ON
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans             &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans             &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &soft_off  &ext_power EP_OFF  &ext_power EP_ON
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans     &trans             &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans     &trans             &trans
                         &trans  &trans  &trans    &trans  &trans  &trans
             >;
         };
