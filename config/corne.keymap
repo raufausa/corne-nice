@@ -123,7 +123,7 @@
 
         Layer3 {
             bindings = <
-&kp Q   &kp W   &kp E   &kp R   &kp T   &kp Y     &kp U   &trans  &trans  &trans  &trans  &to 4
+&kp Q   &kp B   &kp E   &kp R   &kp T   &kp Y     &kp U   &trans  &trans  &trans  &trans  &to 4
 &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &to 5
 &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
                         &trans  &trans  &trans    &trans  &trans  &trans
