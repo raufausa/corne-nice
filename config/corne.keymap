@@ -9,6 +9,70 @@
 #include <dt-bindings/zmk/keys.h>
 
 / {
+    behaviors {
+        HMRShiftL: HMRShiftL {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HMRSHIFTL";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "hold-preferred";
+            hold-while-undecided;
+            hold-trigger-key-positions = <6 6 7 8 9 10 11 18 19 20 21 22 23 30 31 32 33 34 35 39 40 41>;
+            hold-trigger-on-release;
+        };
+
+        HMRShiftR: HMRShiftR {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HMRSHIFTR";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "hold-preferred";
+            hold-while-undecided;
+            hold-trigger-on-release;
+            hold-trigger-key-positions = <2 3 4 5 14 15 16 17 26 27 28 29 36 37 38 0 1 12 13 24 25>;
+        };
+
+        HML: HML {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HML";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "tap-preferred";
+            hold-while-undecided;
+            hold-trigger-key-positions = <6 6 7 8 9 10 11 18 19 20 21 22 23 30 31 32 33 34 35 39 40 41>;
+            hold-trigger-on-release;
+        };
+
+        HMR: HMR {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HMR";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "tap-preferred";
+            hold-while-undecided;
+            hold-trigger-on-release;
+            hold-trigger-key-positions = <2 3 4 5 14 15 16 17 26 27 28 29 36 37 38 0 1 12 13 24 25>;
+        };
+
+        resetLayer: resetLayer {
+            compatible = "zmk,behavior-hold-tap";
+            label = "RESETLAYER";
+            bindings = <&to>, <&kp>;
+
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <350>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -20,10 +84,10 @@
             //                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
 
             bindings = <
-&kp TAB       &kp Q  &kp W  &kp E     &kp R  &kp T        &kp Y      &kp U  &kp I          &kp O    &kp P     &kp ESC
-&kp LEFT_ALT  &kp A  &kp S  &kp D     &kp F  &kp G        &kp H      &kp J  &kp K          &kp L    &kp SEMI  &kp SQT
-&kp LSHFT     &kp Z  &kp X  &kp C     &kp V  &kp B        &kp N      &kp M  &kp COMMA      &kp DOT  &kp FSLH  &kp LEFT_CONTROL
-                            &kp LGUI  &mo 1  &kp ENTER    &kp SPACE  &mo 2  &kp BACKSPACE
+&kp TAB       &kp Q                    &kp W                &kp E            &kp R            &kp T        &kp Y      &kp U             &kp I             &kp O                 &kp P                             &kp ESC
+&kp LEFT_ALT  &HMRShiftL LEFT_SHIFT A  &HMR LEFT_CONTROL S  &HMR LEFT_ALT D  &HMR LEFT_GUI F  &kp G        &kp H      &HMR RIGHT_GUI J  &HMR RIGHT_ALT K  &HMR RIGHT_CONTROL L  &HMRShiftR RIGHT_SHIFT SEMICOLON  &kp SQT
+&kp LSHFT     &kp Z                    &kp X                &kp C            &kp V            &kp B        &kp N      &kp M             &kp COMMA         &kp DOT               &kp FSLH                          &kp LEFT_CONTROL
+                                                            &kp LGUI         &mo 1            &kp ENTER    &kp SPACE  &mo 2             &kp BACKSPACE
             >;
         };
 
@@ -57,11 +121,29 @@
             >;
         };
 
-        layer_3 {
+        Layer3 {
+            bindings = <
+&kp Q   &kp W   &kp E   &kp R   &kp T   &kp Y     &kp U   &trans  &trans  &trans  &trans  &to 4
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &to 5
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+                        &trans  &trans  &trans    &trans  &trans  &trans
+            >;
+        };
+
+        GamingLayer {
+            bindings = <
+&kp TAB    &kp Q  &kp W  &kp E     &kp R     &kp T        &kp Y    &kp U   &kp I      &kp O    &kp P     &kp ESC
+&kp LSHFT  &kp A  &kp S  &kp D     &kp F     &kp G        &kp H    &kp J   &kp K      &kp L    &kp SEMI  &kp SQT
+&kp LCTRL  &kp Z  &kp X  &kp C     &kp V     &kp B        &kp N    &kp M   &kp COMMA  &kp DOT  &kp FSLH  &resetLayer 0 LEFT_COMMAND
+                         &kp LALT  &kp LGUI  &kp SPACE    &kp RET  &trans  &kp BSPC
+            >;
+        };
+
+        layer_5 {
             bindings = <
 &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &resetLayer 0 LEFT_COMMAND
                         &trans  &trans  &trans    &trans  &trans  &trans
             >;
         };
