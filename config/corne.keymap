@@ -187,7 +187,7 @@
         };
 
         newTab {
-            bindings = <&kp LG(TAB)>;
+            bindings = <&kp LG(T)>;
             key-positions = <18 19>;
         };
 
