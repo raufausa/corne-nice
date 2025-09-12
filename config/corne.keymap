@@ -99,6 +99,8 @@
             bindings = <&kp ESCAPE>;
             key-positions = <9 10>;
             layers = <0 1 2 3>;
+            timeout-ms = <30>;
+            require-prior-idle-ms = <200>;
         };
 
         enter {
@@ -106,32 +108,37 @@
             key-positions = <4 3>;
             layers = <0 2 1 3>;
             require-prior-idle-ms = <200>;
+            timeout-ms = <30>;
         };
 
         tab {
             bindings = <&kp TAB>;
             key-positions = <1 2>;
             layers = <0 1 2 3>;
+            timeout-ms = <30>;
+            require-prior-idle-ms = <200>;
         };
 
         NextTab {
-            bindings = <&kp LG(LA(RIGHT))>;
+            bindings = <&kp LC(TAB)>;
             key-positions = <6 7>;
             layers = <0>;
             require-prior-idle-ms = <350>;
+            timeout-ms = <30>;
         };
 
         PreviousTab {
-            bindings = <&kp LG(LA(LEFT_ARROW))>;
+            bindings = <&kp LC(LS(TAB))>;
             key-positions = <4 5>;
             require-prior-idle-ms = <350>;
             layers = <0>;
+            timeout-ms = <30>;
         };
 
         backspace {
             bindings = <&kp BACKSPACE>;
             key-positions = <8 7>;
-            timeout-ms = <50>;
+            timeout-ms = <30>;
             layers = <0>;
             require-prior-idle-ms = <200>;
         };
@@ -141,6 +148,7 @@
             key-positions = <26 27>;
             layers = <0>;
             require-prior-idle-ms = <200>;
+            timeout-ms = <30>;
         };
 
         paste {
@@ -148,6 +156,7 @@
             key-positions = <27 28>;
             layers = <0>;
             require-prior-idle-ms = <350>;
+            timeout-ms = <30>;
         };
 
         undo {
@@ -155,6 +164,7 @@
             key-positions = <25 26>;
             layers = <0>;
             require-prior-idle-ms = <200>;
+            timeout-ms = <30>;
         };
 
         cut {
@@ -168,13 +178,15 @@
             bindings = <&kp DELETE>;
             key-positions = <8 9>;
             layers = <0>;
+            require-prior-idle-ms = <200>;
+            timeout-ms = <30>;
         };
 
         selectprevword {
             bindings = <&kp LA(LS(LEFT))>;
             key-positions = <13 14>;
             layers = <0>;
-            timeout-ms = <50>;
+            timeout-ms = <30>;
             require-prior-idle-ms = <350>;
         };
 
@@ -182,18 +194,38 @@
             bindings = <&kp LA(LS(UP_ARROW))>;
             key-positions = <14 15>;
             layers = <0>;
-            timeout-ms = <50>;
+            timeout-ms = <30>;
             require-prior-idle-ms = <350>;
         };
 
         newTab {
             bindings = <&kp LG(T)>;
             key-positions = <18 19>;
+            require-prior-idle-ms = <200>;
+            timeout-ms = <30>;
+            layers = <0>;
         };
 
         find {
             bindings = <&kp LG(F)>;
             key-positions = <16 17>;
+            require-prior-idle-ms = <350>;
+            layers = <0>;
+            timeout-ms = <30>;
+        };
+
+        selectnextword {
+            bindings = <&kp LS(LA(RIGHT))>;
+            key-positions = <21 22>;
+            timeout-ms = <30>;
+            require-prior-idle-ms = <350>;
+            layers = <0>;
+        };
+
+        selectnextparagraph {
+            bindings = <&kp LS(LA(DOWN))>;
+            key-positions = <20 21>;
+            timeout-ms = <30>;
             require-prior-idle-ms = <350>;
             layers = <0>;
         };
@@ -228,10 +260,10 @@
             //                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
 
             bindings = <
-&kp LG(GRAVE)  &kp Q  &kp W                &kp E            &kp R            &kp T              &kp Y      &kp U             &kp I             &kp O                 &kp P     &kp ESC
-&kp LG(TAB)    &kp A  &HML LEFT_CONTROL S  &HML LEFT_ALT D  &HML LEFT_GUI F  &kp G              &kp H      &HMR RIGHT_GUI J  &HMR RIGHT_ALT K  &HMR RIGHT_CONTROL L  &kp SEMI  &kp SQT
-&kp GLOBE      &kp Z  &kp X                &kp C            &kp V            &kp B              &kp N      &kp M             &kp COMMA         &kp DOT               &kp FSLH  &kp LEFT_CONTROL
-                                           &kp ENTER        &mo 1            &skq LEFT_SHIFT    &kp SPACE  &mo 2             &kp BACKSPACE
+&kp LG(GRAVE)  &kp Q  &kp W                &kp E              &kp R            &kp T              &kp Y      &kp U             &kp I             &kp O                 &kp P     &kp PAGE_UP
+&kp LG(TAB)    &kp A  &HML LEFT_CONTROL S  &HML LEFT_ALT D    &HML LEFT_GUI F  &kp G              &kp H      &HMR RIGHT_GUI J  &HMR RIGHT_ALT K  &HMR RIGHT_CONTROL L  &kp SEMI  &kp PAGE_DOWN
+&kp GLOBE      &kp Z  &kp X                &kp C              &kp V            &kp B              &kp N      &kp M             &kp COMMA         &kp DOT               &kp FSLH  &kp END
+                                           &kp LG(LS(SPACE))  &mo 1            &skq LEFT_SHIFT    &kp SPACE  &mo 2             &kp LC(TAB)
             >;
         };
 
@@ -258,10 +290,10 @@
             //                    | GUI |     | SPC |   | ENT |     | ALT |
 
             bindings = <
-&kp TAB       &kp EXCL   &kp AT         &kp HASH          &kp DLLR              &kp PRCNT                &msc SCRL_UP    &msc SCRL_LEFT  &mmv MOVE_UP    &msc SCRL_RIGHT  &mkp MB2   &kp PAGE_UP
-&kp LEFT_ALT  &kp CARET  &kp AMPERSAND  &kp ASTERISK      &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS    &msc SCRL_DOWN  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &mkp MB1   &kp PAGE_DOWN
-&kp GLOBE     &kp MINUS  &kp EQUAL      &kp LEFT_BRACKET  &kp RIGHT_BRACKET     &kp GRAVE                &kp HOME        &kp LEFT_ARROW  &kp UP_ARROW    &kp DOWN         &kp RIGHT  &kp END
-                                        &kp ENTER         &trans                &skq LEFT_SHIFT          &kp SPACE       &trans          &kp BACKSLASH
+&kp TAB       &kp EXCL   &kp AT         &kp HASH          &kp DLLR              &kp PRCNT                &msc SCRL_DOWN  &msc SCRL_RIGHT  &mmv MOVE_UP    &msc SCRL_LEFT   &mkp MB2   &kp PAGE_UP
+&kp LEFT_ALT  &kp CARET  &kp AMPERSAND  &kp ASTERISK      &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS    &msc SCRL_UP    &mmv MOVE_LEFT   &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &mkp MB1   &kp PAGE_DOWN
+&kp GLOBE     &kp MINUS  &kp EQUAL      &kp LEFT_BRACKET  &kp RIGHT_BRACKET     &kp GRAVE                &kp HOME        &kp LEFT_ARROW   &kp UP_ARROW    &kp DOWN         &kp RIGHT  &kp END
+                                        &kp ENTER         &trans                &skq LEFT_SHIFT          &kp SPACE       &trans           &kp BACKSLASH
             >;
         };
 
